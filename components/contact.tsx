@@ -3,10 +3,14 @@ import { FaPaperPlane } from "react-icons/fa";
 import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
+import { sendEmail, State } from "@/lib/action";
+import { useActionState } from "react";
 
 export default function Contact() {
   const { ref } = useSectionInView({ sectionName: "Contact", threshold: 0.5 });
-    return (
+  const initialState: State = {errors:{}, values:{email:"",message:""}};
+  const [state, formAction] = useActionState(sendEmail,initialState);
+  return (
     <motion.section id="contact" ref={ref}
     className="mb-20 sm:mb-28 w-[min(100%,38rem)] text-center"
     initial={{opacity:0}}
@@ -22,12 +26,29 @@ export default function Contact() {
             href="mailto:shuvoshaha7@gmail.com">shuvoshaha7@gmail.com </a>
          or through this form
         </p>
-        <form className="mt-10 flex flex-col">
-            <input placeholder="Your email"
+        <form className="mt-10 flex flex-col" action={formAction}>
+            <input placeholder="Your email" name="email" defaultValue={state.values?.email || ""}
             className="h-14 rounded-lg border borderBlack p-4"
-            type="email" required={true} maxLength={500}/>
-            <textarea placeholder="Your Message"
-            className="h-52 my-3 rounded-lg border borderBlack p-4" required={true} maxLength={500}></textarea>
+            type="email"/>
+            <div id="email" aria-live="polite" aria-atomic="true">
+              {state.errors?.email &&
+                state.errors.email.map((error: string) => (
+                  <p className="mt-2 text-sm text-red-500" key={error}>
+                    {error}
+                  </p>
+                ))}
+            </div>
+            <textarea placeholder="Your Message" name="message" defaultValue={state.values?.message || ""}
+            className="h-52 my-3 rounded-lg border borderBlack p-4" 
+            ></textarea>
+            <div id="customer-amount" aria-live="polite" aria-atomic="true">
+              {state.errors?.message &&
+                state.errors.message.map((error: string) => (
+                  <p className="mt-2 text-sm text-red-500" key={error}>
+                    {error}
+                  </p>
+                ))}
+            </div>
             <button type="submit"
             className=" group flex items-center justify-center 
             gap-2 h-[3rem] w-[8rem]
