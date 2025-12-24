@@ -15,7 +15,8 @@ export default function Skills() {
       const { ref } = useSectionInView({ sectionName: "Skills"});
     
   return (
-    <section ref={ref} className="mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40" id="skills">
+    <section ref={ref} className="mb-28 max-w-[53rem] 
+        scroll-mt-28 text-center sm:mb-40" id="skills">
         <SectionHeading>My Skills</SectionHeading>
         <ul className="flex gap-2 flex-wrap justify-center text-lg text-gray-800">
             {
