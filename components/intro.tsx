@@ -4,9 +4,15 @@ import { motion } from "framer-motion";
 import { BsArrowRight, BsGithub, BsLinkedin } from "react-icons/bs";
 import Link from "next/link";
 import { HiDownload } from "react-icons/hi";
+import { useInView } from "react-intersection-observer";
+import { useActiveSectionContext } from "@/context/active-section-context";
+import { useEffect } from "react";
+import { useSectionInView } from "@/lib/hooks";
 export default function Intro() {
+  const { ref } = useSectionInView({ sectionName: "Home", threshold: 0.5 });
   return (
-    <section className="mb-28 max-w-[50rem] text-center sm:mb-0">
+    <section ref={ref} id="home" className="mb-28 max-w-[50rem] 
+    text-center sm:mb-0 scroll-mt-[100rem]">
       <div className="flex items-center justify-center">
         <div className="relative">
           <motion.div
