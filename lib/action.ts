@@ -1,5 +1,7 @@
 'use server';
 import {z} from 'zod';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY!);
 const FormSchema = z.object({
@@ -49,6 +51,7 @@ export async function sendEmail(prevState: State, formData: FormData) {
             replyTo: email,
             text: message,
             });
+        
       }catch(error){
         return {
             errors: {
@@ -60,7 +63,8 @@ export async function sendEmail(prevState: State, formData: FormData) {
               }
         };
       }
-            
+        revalidatePath('/');
+        redirect('/');
       
         return {
             values: {
