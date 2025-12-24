@@ -1,7 +1,7 @@
 'use server';
 import {z} from 'zod';
-
-
+import { Resend } from 'resend';
+const resend = new Resend(process.env.RESEND_API_KEY!);
 const FormSchema = z.object({
     email: z
     .string()
@@ -41,7 +41,27 @@ export async function sendEmail(prevState: State, formData: FormData) {
       }
       const { email,message } = validatedFields.data;
    
-      console.log("Email sent:", { email, message });
+      try{
+        await  resend.emails.send({
+            from: 'Contact form <onboarding@resend.dev>',
+            to: 'shuvoshaha7@gmail.com',
+            subject: 'Message from contact form',
+            replyTo: email,
+            text: message,
+            });
+      }catch(error){
+        return {
+            errors: {
+                message: ["Failed to send email. Please try again later."],
+            },
+            values: {
+                email: formData.get("email") as string,
+                message: formData.get("message") as string,
+              }
+        };
+      }
+            
+      
         return {
             values: {
             email: formData.get("email") as string,
