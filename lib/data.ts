@@ -2,7 +2,7 @@ import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
-import corpcommentImg from "@/public/corpcomment.png";
+import nextjsDashboard from "@/public/nextjs-dashboard.png";
 import rmtdevImg from "@/public/rmtdev.png";
 import wordanalyticsImg from "@/public/wordanalytics.png";
 
@@ -27,6 +27,10 @@ export const links = [
     name: "Experience",
     hash: "#experience",
   },
+   {
+    name: "Education",
+    hash: "#education",
+  },
   {
     name: "Contact",
     hash: "#contact",
@@ -35,38 +39,42 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Graduated bootcamp",
-    location: "Miami, FL",
+
+    title: "Software Engineer",
+    company: "TigerIT Bangladesh Limited.",
+    location: "Dhaka, Bangladesh",
     description:
-      "I graduated after 6 months of studying. I immediately found a job as a front-end developer.",
-    icon: React.createElement(LuGraduationCap),
-    date: "2019",
+      "My first job after graduation. I worked here as a software engineer for 1 year.",
+    icon: React.createElement(CgWorkAlt),
+    date: "2020 - 2021",
   },
   {
-    title: "Front-End Developer",
-    location: "Orlando, FL",
+    title: "Software Engineer",
+    company:"Metadesign Solutions Pvt. Limited",
+    location: "Haryana,India",
     description:
-      "I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.",
-    icon: React.createElement(CgWorkAlt),
-    date: "2019 - 2021",
+      "I worked as a front-end developer for 1 years . I also upskilled to the full stack.",
+    icon: React.createElement(FaReact),
+    date: "2022 - 2023",
   },
   {
     title: "Full-Stack Developer",
-    location: "Houston, TX",
+    company:"Freelance",
+    location: "Dhaka, Bangladesh",
     description:
       "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
-    icon: React.createElement(FaReact),
-    date: "2021 - present",
+    icon: React.createElement(CgWorkAlt),
+    date: "2024 - present",
   },
 ] as const;
 
 export const projectsData = [
   {
-    title: "CorpComment",
+    title: "Next.js Dashboard",
     description:
-      "I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.",
+      "This is a full-stack dashboard application covering main features of newest nextjs. It contains login,charts,tables, forms and more.",
     tags: ["React", "Next.js", "MongoDB", "Tailwind", "Prisma"],
-    imageUrl: corpcommentImg,
+    imageUrl: nextjsDashboard,
   },
   {
     title: "rmtDev",
