@@ -8,6 +8,7 @@ import { useInView } from "react-intersection-observer";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import { useEffect } from "react";
 import { useSectionInView } from "@/lib/hooks";
+import shuvo from "@/public/shuvo.jpg";
 export default function Intro() {
   const { ref } = useSectionInView({ sectionName: "Home", threshold: 0.5 });
   const {activeSection,setActiveSection,setTimeOfLastClick}=useActiveSectionContext();
@@ -23,7 +24,7 @@ export default function Intro() {
             transition={{ type: "tween", duration: 0.5 }}
           >
             <Image
-              src="https://media.licdn.com/dms/image/v2/C5103AQE7YlHQE_R5qA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1566328965911?e=1767830400&v=beta&t=021JfjBLPWF1o_PN0b-4gaXED8qxshPFdipojoTMox8"
+              src={shuvo}
               alt="Shuvo Shaha"
               width={192}
               height={192}
